@@ -1,3 +1,6 @@
+MIFARE_CMD_AUTH_A = 0x60
+MIFARE_CMD_AUTH_B = 0x61
+
 import board
 import busio
 import time
@@ -25,7 +28,7 @@ while True:
 
     # Autenticar con el bloque 4 (sector 1, bloque 0)
     default_key = b'\xFF\xFF\xFF\xFF\xFF\xFF'
-    if not pn532.mifare_classic_authenticate_block(uid, 4, PN532_I2C.MIFARE_CMD_AUTH_A, default_key):
+    if not pn532.mifare_classic_authenticate_block(uid, 4, MIFARE_CMD_AUTH_A, default_key):
         print("Fallo al autenticar el bloque 4")
         continue
 
